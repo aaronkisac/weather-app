@@ -4,7 +4,7 @@ import {
   StyledIconWrapper,
   StyledIconDesc,
 } from "./TempIcon.styles";
-const path = "http://openweathermap.org/img/wn/";
+const path = "https://openweathermap.org/img/wn/";
 
 const TempIcon = ({ icon, description }) => {
   return (
