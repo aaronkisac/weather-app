@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const StyledForecastItemWrapper = styled.div`
+export const StyledForecastItemWrapper = styled(motion.div)`
   width: 100%;
   background-color: #5e5f63;
   margin: 10px 0;
