@@ -91,7 +91,7 @@ const CityTemperature = () => {
     fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     fetchApi(process.env.REACT_APP_FORECAST_WEATHER_API, "forecast");
   }, [remainingTime === timePeriod]);
-  return (
+  return weatherList ? (
     <StyledCityTemperatureWrapper>
       <CityHeader
         timePeriod={timePeriod}
@@ -108,6 +108,6 @@ const CityTemperature = () => {
         "loading"
       )}
     </StyledCityTemperatureWrapper>
-  );
+  ) : null;
 };
 export default CityTemperature;
