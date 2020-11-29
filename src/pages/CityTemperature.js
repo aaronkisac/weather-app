@@ -24,6 +24,7 @@ const CityTemperature = () => {
   const getFiveDaysWeather = (weathersList, numberOfDays) => {
     let list = [];
     const hour = moment(weatherList?.currentWeather?.time).format("HH");
+
     for (let index = 0; index < numberOfDays; index++) {
       const tempList = weathersList.list
         .filter(
@@ -47,6 +48,7 @@ const CityTemperature = () => {
         },
       });
     }
+
     return list;
   };
 
@@ -78,9 +80,8 @@ const CityTemperature = () => {
           }
         })
         .catch((error) => {
-          const tempWeatherList = JSON.parse(
-            localStorage.getItem("weatherList")
-          );
+          const tempWeatherList =
+            JSON.parse(localStorage.getItem("weatherList")) || initialData;
           setWeatherList({ ...tempWeatherList });
         });
     },
@@ -91,24 +92,23 @@ const CityTemperature = () => {
     fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     fetchApi(process.env.REACT_APP_FORECAST_WEATHER_API, "forecast");
   }, [remainingTime === timePeriod]);
-  console.log(weatherList);
-  return weatherList ? (
+
+  return (
     <StyledCityTemperatureWrapper>
-      <CityHeader
-        timePeriod={timePeriod}
-        remainingTime={remainingTime}
-        setRemainingTime={setRemainingTime}
-        cityName={weatherList?.city?.name}
-        temp={weatherList?.currentWeather?.temp}
-        time={moment(weatherList?.currentWeather?.time).format("HH:mm")}
-        fetchApi={fetchApi}
-      />
-      {weatherList?.foreCastList.length ? (
-        <ForecastList foreCastList={weatherList?.foreCastList} />
-      ) : (
-        "loading"
+      {weatherList?.city && (
+        <CityHeader
+          timePeriod={timePeriod}
+          remainingTime={remainingTime}
+          setRemainingTime={setRemainingTime}
+          cityName={weatherList?.city?.name}
+          temp={weatherList?.currentWeather?.temp}
+          time={moment(weatherList?.currentWeather?.time).format("HH:mm")}
+          fetchApi={fetchApi}
+        />
       )}
+
+      <ForecastList foreCastList={weatherList?.foreCastList} />
     </StyledCityTemperatureWrapper>
-  ) : null;
+  );
 };
 export default CityTemperature;
