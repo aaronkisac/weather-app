@@ -9,4 +9,8 @@ export const StyledCityTemperatureWrapper = styled.div`
   min-height: 880px;
   color: white;
   background-color: #101012;
+
+  @media (max-width: 450px) {
+    margin: 5px;
+  }
 `;

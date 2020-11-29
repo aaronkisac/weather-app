@@ -3,54 +3,14 @@ import moment from "moment";
 import CityHeader from "../components/CityHeader/CityHeader";
 import ForecastList from "../components/ForecastList/ForecastList";
 import { StyledCityTemperatureWrapper } from "./CityTemperature.styles";
-const timePeriod = 60;
-const initialData = {
-  city: {},
-  currentWeather: {},
-  foreCastList: [],
-};
+import { timePeriod, initialData } from "../utils/constants";
+import { getFiveDaysWeather } from "../helpers/functions";
+
 const CityTemperature = () => {
   const [remainingTime, setRemainingTime] = useState(0);
   const [weatherList, setWeatherList] = useState(
     JSON.parse(localStorage.getItem("weatherList")) || initialData
   );
-
-  const addDaysAndFormat = (date, days = 0) => {
-    let result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return moment(result).format("DD");
-  };
-
-  const getFiveDaysWeather = (weathersList, numberOfDays) => {
-    let list = [];
-    const hour = moment(weatherList?.currentWeather?.time).format("HH");
-
-    for (let index = 0; index < numberOfDays; index++) {
-      const tempList = weathersList.list
-        .filter(
-          (item) =>
-            addDaysAndFormat(item.dt_txt) ===
-            addDaysAndFormat(moment(), hour >= 21 ? index + 1 : index)
-        )
-        .reduce((a, b) => {
-          return a.main.temp > b.main.temp ? a : b;
-        });
-
-      list.push({
-        id: tempList?.dt,
-        temp_max: tempList?.main?.temp,
-        time: tempList?.dt_txt,
-        weather: {
-          description: tempList?.weather[0]?.description,
-          icon: tempList?.weather[0]?.icon,
-          id: tempList?.weather[0]?.id,
-          main: tempList?.weather[0]?.main,
-        },
-      });
-    }
-
-    return list;
-  };
 
   const fetchApi = useCallback(
     (api, type) => {
@@ -106,7 +66,6 @@ const CityTemperature = () => {
           fetchApi={fetchApi}
         />
       )}
-
       <ForecastList foreCastList={weatherList?.foreCastList} />
     </StyledCityTemperatureWrapper>
   );

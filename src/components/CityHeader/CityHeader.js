@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from "react";
+
 import {
   StyledCityHeaderWrapper,
   StyledProgressBarWrapper,
@@ -31,11 +32,19 @@ const CityHeader = ({
     <StyledCityHeaderWrapper>
       <StyledHeaderTextWrapper>
         <StyledCityName>{cityName?.toUpperCase()}</StyledCityName>
-        <StyledTime> {time} GMT</StyledTime>
+        <StyledTime>
+          <span className="first" />
+          <span className="second" />
+          <span className="third" />
+          {time} GMT
+          <span className="first" />
+          <span className="second" />
+          <span className="third" />
+        </StyledTime>
         <StyledTemp> {Math.round(temp)}&#xb0;</StyledTemp>
       </StyledHeaderTextWrapper>
       <StyledLabelProgressBar>
-        Reloading in {timePeriod - remainingTime}s
+        Reloading in <div>{timePeriod - remainingTime}</div>s
       </StyledLabelProgressBar>
       <StyledProgressBarWrapper className="progress">
         <div
