@@ -3,7 +3,7 @@ import { StyledAppWrapper } from "./App.styles";
 
 function App() {
   return (
-    <StyledAppWrapper>
+    <StyledAppWrapper id="appWrapper">
       <CityTemperature />
     </StyledAppWrapper>
   );

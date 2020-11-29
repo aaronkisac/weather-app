@@ -51,7 +51,7 @@ const CityHeader = ({
           className="progress-bar"
           role="progressbar"
           style={{ width: `${(100 / timePeriod) * remainingTime}%` }}
-          aria-valuenow={`${(100 / timePeriod) * remainingTime}`}
+          aria-valuenow={(100 / timePeriod) * remainingTime}
           aria-valuemin="0"
           aria-valuemax="100"
         />
