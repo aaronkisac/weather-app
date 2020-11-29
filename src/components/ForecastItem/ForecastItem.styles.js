@@ -1,7 +1,6 @@
 import styled from "styled-components";
-let cord = 0;
+
 export const StyledForecastItemWrapper = styled.div`
-  ${(p) => (cord = (p.index - 5) * 20)}
   width: 100%;
   background-color: #5e5f63;
   margin: 10px 0;
