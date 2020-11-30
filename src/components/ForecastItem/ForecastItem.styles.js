@@ -19,14 +19,16 @@ export const StyledForecastItemWrapper = styled.div`
   animation-name: bounceWeatherBar;
   animation-duration: 1s;
   animation-timing-function: ease-out;
-  animation-delay: ${(p) => p.index / 5}s;
+  animation-delay: ${(p) => p.index / 10}s;
 
   @keyframes bounceWeatherBar {
     0% {
       transform: translateX(-20px);
+      opacity: 0;
     }
     100% {
       transform: translateX(0px);
+      opacity: 1;
     }
   }
 `;

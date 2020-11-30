@@ -7,6 +7,7 @@ export const StyledIconWrapper = styled.div`
 `;
 export const StyledIconDesc = styled.div`
   font-size: 12px;
+  text-align: right;
 `;
 export const StyledIcon = styled.div`
   display: grid;
