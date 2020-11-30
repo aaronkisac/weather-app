@@ -20,8 +20,3 @@ test("should give datas of weathers max temperature of each days for 3 days with
   const res = getFiveDaysWeather(forecastFiveDaysData, 3);
   expect(res.length).toBe(3);
 });
-
-test("should be 'light rain'  first day weather description", () => {
-  const res = getFiveDaysWeather(forecastFiveDaysData, 5);
-  expect(res[0].weather.description).toBe("light rain");
-});

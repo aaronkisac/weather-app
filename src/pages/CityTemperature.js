@@ -20,7 +20,6 @@ const CityTemperature = () => {
         .then((res) => {
           const tempWeatherList = weatherList;
           const date = moment().utc(res.data?.dt).format("YYYY-MM-DD HH:mm:ss");
-          console.log(res.data);
           if (type === "current") {
             tempWeatherList.city.id = res.data?.id;
             tempWeatherList.city.name = res.data?.name;
@@ -52,8 +51,9 @@ const CityTemperature = () => {
   useEffect(() => {
     fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     fetchApi(process.env.REACT_APP_FORECAST_WEATHER_API, "forecast");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [remainingTime === timePeriod]);
-  console.log(weatherList);
+
   return (
     <StyledCityTemperatureWrapper data-testid="cityTemperatureWrapper">
       {weatherList?.city && (
