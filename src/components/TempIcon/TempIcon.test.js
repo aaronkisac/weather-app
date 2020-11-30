@@ -5,8 +5,8 @@ import { item } from "../mockData";
 test("should render TempIcon component", () => {
   const wrapper = render(
     <TempIcon
-      icon={item[0].weather.icon}
-      description={item[0].weather.description}
+      icon={item.foreCastList[0].weather.icon}
+      description={item.foreCastList[0].weather.description}
     />
   );
   expect(wrapper.getByTestId("tempIconWrapper")).toBeInTheDocument();
@@ -15,8 +15,8 @@ test("should render TempIcon component", () => {
 test("should render the description in TempIcon component", () => {
   const wrapper = render(
     <TempIcon
-      icon={item[0].weather.icon}
-      description={item[0].weather.description}
+      icon={item.foreCastList[0].weather.icon}
+      description={item.foreCastList[0].weather.description}
     />
   );
   expect(wrapper.getByText("LIGHT RAIN")).toBeInTheDocument();
@@ -30,8 +30,8 @@ test("should render 2 children in the TempIcon component", () => {
 test("should render 5 children in the TempIcon component", () => {
   const wrapper = render(
     <TempIcon
-      icon={item[0].weather.icon}
-      description={item[0].weather.description}
+      icon={item.foreCastList[0].weather.icon}
+      description={item.foreCastList[0].weather.description}
     />
   );
   expect(wrapper.getByTestId("tempIconImg").src).toBe(

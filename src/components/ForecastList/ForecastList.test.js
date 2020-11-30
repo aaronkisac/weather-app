@@ -13,6 +13,6 @@ test("should render the ForecastList component with zero child", () => {
 });
 
 test("should render 5 children in the ForecastList component", () => {
-  const wrapper = render(<ForecastList foreCastList={item} />);
+  const wrapper = render(<ForecastList foreCastList={item.foreCastList} />);
   expect(wrapper.getByTestId("forecastListWrapper").children.length).toBe(5);
 });

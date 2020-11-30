@@ -54,7 +54,7 @@ const CityTemperature = () => {
   }, [remainingTime === timePeriod]);
 
   return (
-    <StyledCityTemperatureWrapper>
+    <StyledCityTemperatureWrapper data-testid="cityTemperatureWrapper">
       {weatherList?.city && (
         <CityHeader
           timePeriod={timePeriod}

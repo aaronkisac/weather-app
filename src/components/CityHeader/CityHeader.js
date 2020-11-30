@@ -29,7 +29,7 @@ const CityHeader = ({
   }, [calculateTime]);
 
   return (
-    <StyledCityHeaderWrapper>
+    <StyledCityHeaderWrapper data-testid="cityHeaderWrapper">
       <StyledHeaderTextWrapper>
         <StyledCityName>{cityName?.toUpperCase()}</StyledCityName>
         <StyledTime>
@@ -44,10 +44,15 @@ const CityHeader = ({
         <StyledTemp> {Math.round(temp)}&#xb0;</StyledTemp>
       </StyledHeaderTextWrapper>
       <StyledLabelProgressBar>
-        Reloading in <div>{timePeriod - remainingTime}</div>s
+        Reloading in{" "}
+        <div data-testid="cityHeaderReloadingTime">
+          {timePeriod - remainingTime}
+        </div>
+        s
       </StyledLabelProgressBar>
       <StyledProgressBarWrapper className="progress">
         <div
+          data-testid="cityHeaderProgressBar"
           className="progress-bar"
           role="progressbar"
           style={{ width: `${(100 / timePeriod) * remainingTime}%` }}
