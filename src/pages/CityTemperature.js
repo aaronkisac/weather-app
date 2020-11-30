@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import moment from "moment";
+import axios from "axios";
+
 import CityHeader from "../components/CityHeader/CityHeader";
 import ForecastList from "../components/ForecastList/ForecastList";
 import { StyledCityTemperatureWrapper } from "./CityTemperature.styles";
@@ -14,8 +16,8 @@ const CityTemperature = () => {
 
   const fetchApi = useCallback(
     (api, type) => {
-      fetch(api)
-        .then((res) => res.json())
+      axios
+        .get(api)
         .then((data) => {
           const tempWeatherList = weatherList;
           const date = moment().utc(data?.dt).format("YYYY-MM-DD HH:mm:ss");

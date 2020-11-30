@@ -23,11 +23,11 @@ export const StyledForecastItemWrapper = styled.div`
 
   @keyframes bounceWeatherBar {
     0% {
-      transform: translateX(-20px);
+      transform: translate(-20px, 20px);
       opacity: 0;
     }
     100% {
-      transform: translateX(0px);
+      transform: translate(0, 0);
       opacity: 1;
     }
   }

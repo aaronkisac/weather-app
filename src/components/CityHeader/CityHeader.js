@@ -47,7 +47,7 @@ const CityHeader = ({
         Reloading in{" "}
         <div data-testid="cityHeaderReloadingTime">
           {timePeriod - remainingTime}
-        </div>
+        </div>{" "}
         s
       </StyledLabelProgressBar>
       <StyledProgressBarWrapper className="progress">
