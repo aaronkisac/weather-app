@@ -20,6 +20,7 @@ const CityHeader = ({
 }) => {
   const calculateTime = useCallback(() => {
     setRemainingTime(remainingTime === timePeriod ? 0 : remainingTime + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [remainingTime]);
 
   useEffect(() => {
