@@ -8,11 +8,16 @@ const path = process.env.REACT_APP_PATH_ICON;
 
 const TempIcon = ({ icon, description }) => {
   return (
-    <StyledIconWrapper>
+    <StyledIconWrapper data-testid="tempIconWrapper">
       <StyledIcon>
-        <img src={`${path}${icon}.png`} className="rounded" alt={description} />
+        <img
+          data-testid="tempIconImg"
+          src={`${path}${icon}.png`}
+          className="rounded"
+          alt={description}
+        />
       </StyledIcon>
-      <StyledIconDesc>{description.toUpperCase()}</StyledIconDesc>
+      <StyledIconDesc>{description?.toUpperCase()}</StyledIconDesc>
     </StyledIconWrapper>
   );
 };

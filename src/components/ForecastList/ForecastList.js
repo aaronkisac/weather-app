@@ -4,7 +4,7 @@ import { StyledForecastListWrapper } from "./ForecastList.styles";
 
 const ForecastList = ({ foreCastList }) => {
   return (
-    <StyledForecastListWrapper>
+    <StyledForecastListWrapper data-testid="forecastListWrapper">
       {foreCastList?.map((item, index) => (
         <ForecastItem key={`key-${item.id}`} weather={item} index={index} />
       ))}
