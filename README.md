@@ -12,6 +12,7 @@ https://weather-app-harun-kisac.herokuapp.com/
 
 ## Project Map :
 
+```
 WeatherApp
 ├── README.md
 ├── node_modules
@@ -56,6 +57,7 @@ WeatherApp
 ├── index.js
 ├── reportWebVitals.js
 └── setupTests.js
+```
 
 ### `npm start` or `yarn start`
 
