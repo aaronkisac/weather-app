@@ -73,3 +73,7 @@ Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
 
 [Read more about testing.](https://facebook.github.io/create-react-app/docs/running-tests)
+
+## What’s Included?
+
+- React, JSX, ES6, Axios, Styled Component, Jest, React Test Library, Moment.
