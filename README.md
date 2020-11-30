@@ -4,7 +4,7 @@ https://www.linkedin.com/in/harun-kisac/
 
 ## Further improvement :
 
-If I could have more time,I would make another extra page and we would be able to choose the preferred city and see the detailed weather of the days by hour when we clicked the bars.I would use animations to improve the design of these hourly changeovers.
+If I could have more time,I would make another extra page and we would be able to choose the preferred city and see the detailed weather of the days by hour when we clicked the bars.I would use animations to improve the design of these page transitions.
 
 ## Deployment:
 
