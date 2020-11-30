@@ -6,18 +6,18 @@ export const addDaysAndFormat = (date, days = 0) => {
   return moment(result).format("DD");
 };
 
-export const getFiveDaysWeather = (weathersList, numberOfDays) => {
+export const getWeatherDays = (weathersList, numberOfDays = 5) => {
   let list = [];
   const hour = moment(weathersList?.currentWeather?.time).format("HH");
 
   for (let index = 0; index < numberOfDays; index++) {
     const tempList = weathersList.list
-      .filter(
+      ?.filter(
         (item) =>
           addDaysAndFormat(item.dt_txt) ===
           addDaysAndFormat(moment(), hour >= 21 ? index + 1 : index)
       )
-      .reduce((a, b) => {
+      ?.reduce((a, b) => {
         return a.main.temp > b.main.temp ? a : b;
       });
 

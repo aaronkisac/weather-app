@@ -5,7 +5,7 @@ import CityHeader from "../components/CityHeader/CityHeader";
 import ForecastList from "../components/ForecastList/ForecastList";
 import { StyledCityTemperatureWrapper } from "./CityTemperature.styles";
 import { timePeriod, initialData } from "../utils/constants";
-import { getFiveDaysWeather } from "../helpers/functions";
+import { getWeatherDays } from "../helpers/functions";
 
 const CityTemperature = () => {
   const [remainingTime, setRemainingTime] = useState(0);
@@ -30,8 +30,9 @@ const CityTemperature = () => {
               "weatherList",
               JSON.stringify(tempWeatherList)
             );
-          } else {
-            tempWeatherList.foreCastList = getFiveDaysWeather(res.data, 5);
+          }
+          if (type === "forecast") {
+            tempWeatherList.foreCastList = getWeatherDays(res.data);
             setWeatherList({ ...tempWeatherList });
             localStorage.setItem(
               "weatherList",
@@ -40,6 +41,7 @@ const CityTemperature = () => {
           }
         })
         .catch((error) => {
+          console.log("​CityTemperature -> error", error);
           const tempWeatherList =
             JSON.parse(localStorage.getItem("weatherList")) || initialData;
           setWeatherList({ ...tempWeatherList });
@@ -49,8 +51,8 @@ const CityTemperature = () => {
   );
 
   useEffect(() => {
-    fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     fetchApi(process.env.REACT_APP_FORECAST_WEATHER_API, "forecast");
+    fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [remainingTime === timePeriod]);
 
@@ -64,7 +66,6 @@ const CityTemperature = () => {
           cityName={weatherList?.city?.name}
           temp={weatherList?.currentWeather?.temp}
           time={moment(weatherList?.currentWeather?.time).format("HH:mm")}
-          fetchApi={fetchApi}
         />
       )}
       <ForecastList foreCastList={weatherList?.foreCastList} />
