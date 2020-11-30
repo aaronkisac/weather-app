@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import moment from "moment";
 import axios from "axios";
-
 import CityHeader from "../components/CityHeader/CityHeader";
 import ForecastList from "../components/ForecastList/ForecastList";
 import { StyledCityTemperatureWrapper } from "./CityTemperature.styles";
@@ -18,14 +17,14 @@ const CityTemperature = () => {
     (api, type) => {
       axios
         .get(api)
-        .then((data) => {
+        .then((res) => {
           const tempWeatherList = weatherList;
-          const date = moment().utc(data?.dt).format("YYYY-MM-DD HH:mm:ss");
-
+          const date = moment().utc(res.data?.dt).format("YYYY-MM-DD HH:mm:ss");
+          console.log(res.data);
           if (type === "current") {
-            tempWeatherList.city.id = data?.id;
-            tempWeatherList.city.name = data?.name;
-            tempWeatherList.currentWeather.temp = data?.main?.temp;
+            tempWeatherList.city.id = res.data?.id;
+            tempWeatherList.city.name = res.data?.name;
+            tempWeatherList.currentWeather.temp = res.data?.main?.temp;
             tempWeatherList.currentWeather.time = date;
             setWeatherList({ ...tempWeatherList });
             localStorage.setItem(
@@ -33,7 +32,7 @@ const CityTemperature = () => {
               JSON.stringify(tempWeatherList)
             );
           } else {
-            tempWeatherList.foreCastList = getFiveDaysWeather(data, 5);
+            tempWeatherList.foreCastList = getFiveDaysWeather(res.data, 5);
             setWeatherList({ ...tempWeatherList });
             localStorage.setItem(
               "weatherList",
@@ -54,7 +53,7 @@ const CityTemperature = () => {
     fetchApi(process.env.REACT_APP_CURRENT_WEATHER_API, "current");
     fetchApi(process.env.REACT_APP_FORECAST_WEATHER_API, "forecast");
   }, [remainingTime === timePeriod]);
-
+  console.log(weatherList);
   return (
     <StyledCityTemperatureWrapper data-testid="cityTemperatureWrapper">
       {weatherList?.city && (
