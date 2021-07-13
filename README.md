@@ -8,7 +8,7 @@ If I could have more time,I would make another extra page and we would be able t
 
 ## Deployment:
 
-https://weather-app-harun-kisac.herokuapp.com/
+https://weather-app-gqt1i2uo6-harunkisacuk.vercel.app/
 
 ## Project Map :
 
